@@ -20,11 +20,11 @@ import React, { Component } from 'react';
 
   <button>All Branches List</button>
  
-  <button>New Branch</button>
+
  
 
 
-  <button>New Branch</button>
+  <button>New Products</button>
  
 
 
