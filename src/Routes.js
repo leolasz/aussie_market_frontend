@@ -2,7 +2,7 @@
 import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import Market from './components/Market';
-import Test from './components/Test';​
+import Test from './components/Test';
 
 const Routes = (
  <Router>
@@ -12,4 +12,4 @@ const Routes = (
     </div>
   </Router>
 )
-​export default Routes;
+export default Routes;
