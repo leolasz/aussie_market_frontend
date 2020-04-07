@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Market from './Market';
-import Branches from './Branches'
+import Main   from './Main';
 import { Link } from 'react-router-dom';
 
 
