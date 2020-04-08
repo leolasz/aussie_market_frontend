@@ -1,13 +1,12 @@
-
 import React, { Component } from 'react';
 
 
 
-class All_branches extends Component{
+class Branches extends Component{
     render(){
       return(
         <div>
-         <h3>All Branches</h3>
+         <h3>Add a New Branch</h3>
         
     </div>
       );
@@ -15,4 +14,4 @@ class All_branches extends Component{
   }
   
   
-  export default All_branches;
+export default Branches;
