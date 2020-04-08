@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
 class Main extends Component{
+
   render(){
     return(
       <div>
@@ -16,7 +18,7 @@ class Main extends Component{
              <li><button><Link to={"/addproducts"} > Add Products </Link></button></li>
          </ul>
          </nav>
-    
+
       </div>
     );
   }

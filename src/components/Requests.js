@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SERVER_URL_requests = 'http://localhost:3000/requests';
@@ -84,7 +85,7 @@ class Requests extends Component {
                   <td>{req.price}</td>
                   <td>{req.status}</td>
                   <td>
-                    <button type="button" onClick={() =>this.  _editRequest(req.id)}>Edit</button>
+                    <button type="button"><Link to={"/editRequest"}>Edit</Link></button>
                     &nbsp;<button type="button" onClick={() => this._deleteRequest(req.id)}>Delete</button>
                   </td>
                 </tr>

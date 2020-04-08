@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Main from './Main';
 import axios from 'axios';
-
 
 const SERVER_URL_login = 'http://localhost:3000/users.json';
 
@@ -11,17 +11,11 @@ class Market extends Component {
   this.state = {
         username: '',
         password: '',
+        check: ''
 
     };
 
-// Let's poll for Search from the DB via ajax
-//   const fetchresult = () => {
-//     axios.post(SERVER_URL_login).then((results) => {
-//     this.setState({searchdata: results.data});
-//     // setTimeout(fetchresult, 4000); // recursion
-//
-//   });
-// }
+  localStorage.clear();
 
   this._handleChange = this._handleChange.bind(this);
   this._handleSubmit = this._handleSubmit.bind(this);
@@ -34,10 +28,13 @@ class Market extends Component {
 
   // Event listener
   _handleSubmit(event) {
-    event.preventDefault(); // Stay here and handle the submission with JS.
+    // event.preventDefault(); // Stay here and handle the submission with JS.
 
     axios.get(`${SERVER_URL_login}?email=${this.state.username}&password=${this.state.password}`).then((results) => {
-      console.log(results.data.id);
+      if(results.data.id){
+        localStorage.setItem('user_id', 'results.data.id');
+        this.state.check = localStorage.getItem('user_id');
+      }
     })
   }
 
@@ -52,8 +49,19 @@ class Market extends Component {
             <input type="text" name="password" onChange={ this._handleChange }/> <br/><br/>
             <input type="submit" value="Submit" onClick={ this._handleSubmit }/>
           </form>
+          <checkAuthority props={ this.state.check }/>
       </div>
     );
+  }
+}
+
+const checkAuthority = (props) => {
+   if( typeof props.check !== 'undefined' ) {
+     return  (
+     <div>
+     { <Main />}
+     </div>
+     )
   }
 }
 
