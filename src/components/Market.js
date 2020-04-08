@@ -11,7 +11,7 @@ class Market extends Component {
   this.state = {
         username: '',
         password: '',
-        users : []
+
     };
 
 // Let's poll for Search from the DB via ajax
