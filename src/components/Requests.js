@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-const SERVER_URL_requests = 'http://localhost:3000/requests.json';
+const SERVER_URL_requests = 'http://localhost:3000/requests';
 
 class Requests extends Component {
 
@@ -23,15 +23,41 @@ class Requests extends Component {
 
     fetchresult();
 
-        this.deleteReq = this.deleteReq.bind(this);
+      // this._handleDelete = this._handleDelete.bind(this);
 
   }
 
-  deleteReq = (index) => {
-      const reqs = Object.assign([],this.state.reqs);
-      reqs.splice(index,1);
-      this.setState({reqs:reqs});
-    }
+  deleteRequest(requestId) {
+    console.log(requestId);
+
+    const { reqs } = this.state.reqs;
+
+        axios.delete(`${SERVER_URL_requests}/${requestId}/`)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                reqs: reqs.filter(req => req.id !== requestId)
+              });
+            }
+          )
+  }
+
+  editRequest(requestId) {
+    console.log(requestId);
+
+    const { reqs } = this.state.reqs;
+
+        axios.delete(`${SERVER_URL_requests}/${requestId}/`)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                reqs: reqs.filter(req => req.id !== requestId)
+              });
+            }
+          )
+  }
 
   render(){
     return(
@@ -54,8 +80,8 @@ class Requests extends Component {
                   <td>{req.price}</td>
                   <td>{req.status}</td>
                   <td>
-                    <button type="button">Edit</button>
-                    &nbsp;<button type="button" onClick={this.deleteReq.bind(req.id)}>Delete</button>
+                    <button type="button" onClick={() => this.editRequest(req.id)}>Edit</button>
+                    &nbsp;<button type="button" onClick={() => this.deleteRequest(req.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
