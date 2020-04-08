@@ -23,7 +23,6 @@ class Requests extends Component {
 
     fetchresult();
 
-      this._editRequest = this._editRequest.bind(this);
       this._deleteRequest = this._deleteRequest.bind(this);
 
   }
@@ -44,25 +43,6 @@ class Requests extends Component {
           )
   }
 
-  _editRequest(requestId) {
-    console.log(requestId);
-      const index = this.state.reqs.findIndex((req) => {
-        return req.id === requestId;
-      })
-
-    const req = Object.assign([], this.state.reqs);
-
-
-          // axios.delete(`${SERVER_URL_requests}/${requestId}/`)
-          //   .then(res => res.json())
-          //   .then(
-          //     (result) => {
-          //       this.setState({
-          //         reqs: reqs.filter(req => req.id !== requestId)
-          //       });
-          //     }
-          //   )
-  }
 
   render(){
     return(
@@ -86,7 +66,7 @@ class Requests extends Component {
                   <td>{req.status}</td>
                   <td>
                     <button type="button"><Link to={"/editRequest"}>Edit</Link></button>
-                    &nbsp;<button type="button" onClick={() => this._deleteRequest(req.id)}>Delete</button>
+                    &nbsp;<button type="button" onClick={() => this._deleteRequest(this,req.id)}>Delete</button>
                   </td>
                 </tr>
               ))}

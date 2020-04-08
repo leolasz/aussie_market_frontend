@@ -5,7 +5,7 @@ const SERVER_URL_requests = 'http://localhost:3000/requests';
 const SERVER_URL_branches = 'http://localhost:3000/branches';
 const SERVER_URL_products = 'http://localhost:3000/products';
 
-class editRequest extends Component {
+class newRequest extends Component {
 
     constructor(){
       super();
@@ -38,7 +38,7 @@ class editRequest extends Component {
     _handleSave(event) {
       event.preventDefault(); // Stay here and handle the submission with JS.
 
-      axios.post(`${SERVER_URL_requests}/new/`).then((results) => {
+      axios.post(SERVER_URL_requests).then((results) => {
         this.setState({reqs: results.data});
       })
     }
@@ -47,7 +47,7 @@ class editRequest extends Component {
   render(){
     return(
       <div>
-      <h3>Edit Request</h3>
+      <h3>New Request</h3>
       <form>
       <label>Branch:</label><select id="selectBranches">
       {this.state.b.map((branch,key) => (
@@ -61,7 +61,7 @@ class editRequest extends Component {
       </select> <br/>
       <label>Quantity:</label><input type="number" /><br/>
       <label>Status:</label><input type="text" value="OPEN" readOnly="true" /><br/>
-      <label>Created on:</label><input type="date" value={this.state.current_date} readOnly="true" /><br/>
+      <label>Created on:</label><input type="date" value={this.state.current_date} /><br/>
       <input type="submit" value="Save" onClick={ this._handleSave }/>
       </form>
       </div>
@@ -69,4 +69,4 @@ class editRequest extends Component {
   }
 
 }
-export default editRequest;
+export default newRequest;

@@ -8,6 +8,7 @@ import Branches from './components/Branches';
 import Products from './components/Products';
 import AddProducts from './components/AddProduct';
 import editRequest from './components/editRequest';
+import newRequest from './components/newRequest';
 const Routes = (
  <Router>
    <div>
@@ -18,6 +19,7 @@ const Routes = (
       <Route exact path="/products" component={ Products } />
       <Route exact path="/addproducts" component={ AddProducts } />
       <Route exact path="/editRequest" component={ editRequest } />
+      <Route exact path="/newRequest" component={ newRequest } />
 
     </div>
   </Router>
