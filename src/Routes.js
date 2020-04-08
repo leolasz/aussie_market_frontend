@@ -12,7 +12,10 @@ const Routes = (
       <Route exact path="/" component={ Market } />
       <Route exact path="/main" component={ Main } />
       <Route exact path="/requests" component={ Requests } />
+
       <Route exact path="/branches" component={ Branches } />
+
+
     </div>
   </Router>
 )

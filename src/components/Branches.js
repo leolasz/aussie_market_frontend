@@ -39,7 +39,7 @@ class Branches extends Component {
 
               {this.state.branch_list.map(branch => (
                 <tr key={branch.id}>
-                  <td>{branch.id}</td>  
+                  <td>{branch.id}</td>
                   <td>{branch.branch_name}</td>
                   <td>{branch.location}</td>
                   <td>{branch.email}</td>

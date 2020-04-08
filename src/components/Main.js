@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -8,30 +8,21 @@ import React, { Component } from 'react';
          return(
       <div>
         <h1>Welcome to Aussie Market Manager</h1>
-        
-  <button>New Request</button>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <ul className="navbar-nav mr-auto">
+    
+   <li><button><Link to={"/requests"} >  New Requests </Link></button></li>  
+   <li><button><Link to={"/all_requests"} > All Requests </Link></button></li>    
+   <li><button><Link to={"/branches"} > Add new Branch </Link></button></li> 
+   <li><button><Link to={"/all_branches"} > All Branches </Link></button></li>
+
+   </ul>
+   </nav>
+
+
+
+
  
-
-  <button>All Requests</button>
- 
-
-  <button>New Branch</button>
- 
-
-  <button>All Branches List</button>
- 
-  <button>New Branch</button>
- 
-
-
-  <button>New Branch</button>
- 
-
-
-  <button>All Products </button>
-  
-
-
 
       </div>
     );
