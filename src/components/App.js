@@ -4,8 +4,10 @@ import Market from './Market';
 import Main   from './Main';
 import Requests from './Requests';
 import Products from './Products';
-import AddRequest from './AddRequest';
 import { Link } from 'react-router-dom';
+import newRequest from './newRequest';
+import newBranch from './newBranch';
+import newProducts from './newProducts';
 
 function App() {
   return (
@@ -13,7 +15,10 @@ function App() {
         <Market />
         <Requests />
         <Products />
-        <AddRequest />
+        <newRequest />
+        <newBranch />
+        <newProducts />
+    
         
        
     </div>
