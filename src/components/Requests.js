@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 const SERVER_URL_requests = 'http://localhost:3000/requests';
 
 class Requests extends Component {
@@ -23,11 +22,12 @@ class Requests extends Component {
 
     fetchresult();
 
-      // this._handleDelete = this._handleDelete.bind(this);
+      this._editRequest = this._editRequest.bind(this);
+      this._deleteRequest = this._deleteRequest.bind(this);
 
   }
 
-  deleteRequest(requestId) {
+  _deleteRequest(requestId) {
     console.log(requestId);
 
     const { reqs } = this.state.reqs;
@@ -43,20 +43,24 @@ class Requests extends Component {
           )
   }
 
-  editRequest(requestId) {
+  _editRequest(requestId) {
     console.log(requestId);
+      const index = this.state.reqs.findIndex((req) => {
+        return req.id === requestId;
+      })
 
-    const { reqs } = this.state.reqs;
+    const req = Object.assign([], this.state.reqs);
 
-        axios.delete(`${SERVER_URL_requests}/${requestId}/`)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                reqs: reqs.filter(req => req.id !== requestId)
-              });
-            }
-          )
+
+          // axios.delete(`${SERVER_URL_requests}/${requestId}/`)
+          //   .then(res => res.json())
+          //   .then(
+          //     (result) => {
+          //       this.setState({
+          //         reqs: reqs.filter(req => req.id !== requestId)
+          //       });
+          //     }
+          //   )
   }
 
   render(){
@@ -80,13 +84,14 @@ class Requests extends Component {
                   <td>{req.price}</td>
                   <td>{req.status}</td>
                   <td>
-                    <button type="button" onClick={() => this.editRequest(req.id)}>Edit</button>
-                    &nbsp;<button type="button" onClick={() => this.deleteRequest(req.id)}>Delete</button>
+                    <button type="button" onClick={() =>this.  _editRequest(req.id)}>Edit</button>
+                    &nbsp;<button type="button" onClick={() => this._deleteRequest(req.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
 
           </table>
+
       </div>
     )
   }
