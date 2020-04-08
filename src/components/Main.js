@@ -11,11 +11,14 @@ class Main extends Component{
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <ul className="navbar-nav mr-auto">
 
-             <li><button><Link to={"/requestform"} >  New Requests </Link></button></li>
+      
+             <li><button><Link to={"/addproducts"} > Add New Products </Link></button></li>
+             <li><button><Link to={"/addRequest"} > Add New Requests </Link></button></li>
              <li><button><Link to={"/requests"} > All Requests </Link></button></li>
              <li><button><Link to={"/branches"} > All Branches </Link></button></li>
              <li><button><Link to={"/products"} > All Products </Link></button></li>
-             <li><button><Link to={"/addproducts"} > Add Products </Link></button></li>
+
+            
          </ul>
          </nav>
 
