@@ -24,7 +24,6 @@ class Requests extends Component {
     fetchresult();
 
       this._deleteRequest = this._deleteRequest.bind(this);
-
   }
 
   _deleteRequest(requestId) {
