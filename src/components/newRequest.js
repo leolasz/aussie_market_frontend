@@ -11,40 +11,33 @@ class newRequest extends Component {
     this.state = {
       branchList: [],
       productList: [],
-      request : {
-            branch_id: 0,
-            product_id: 0,
-            quantity: 0,
-            price: 0,
-            status: '',
-            created_at: '' }
+      branch_id: 0,
+      product_id: 0,
+      quantity: 0,
+      price: 0,
+      status: "",
+      created_at: ""
 
     };
 
     const fetchresult = () => {
       //Branches
-      axios
-        .get(SERVER_URL_branches)
-        .then((response) => {
-          this.setState({
-            branchList: response.data,
-            value: "",
-            display: "(Select your branch)",
-          });
-        })
-
+      axios.get(SERVER_URL_branches).then((response) => {
+        this.setState({
+          branchList: response.data,
+          value: "",
+          display: "(Select your branch)",
+        });
+      });
 
       //Products
-      axios
-        .get(SERVER_URL_products)
-        .then((response) => {
-          this.setState({
-            productList: response.data,
-            value: "",
-            display: "(Select your Product)",
-          });
-        })
-
+      axios.get(SERVER_URL_products).then((response) => {
+        this.setState({
+          productList: response.data,
+          value: "",
+          display: "(Select your Product)",
+        });
+      });
     };
 
     fetchresult();
@@ -53,16 +46,23 @@ class newRequest extends Component {
   }
 
   _handleChange(event) {
-    this.setState({[event.target.name]:event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   // Event listener
   _handleSave(event) {
     event.preventDefault(); // Stay here and handle the submission with JS.
 
-    axios.post(SERVER_URL_requests,this.state.request).then((results) => {
-      this.setState({ req: results.data });
-    })
+    var request = {
+      branch_id: this.state.branch_id,
+      product_id: this.state.product_id,
+      quantity: this.state.quantity,
+      status: this.state.status,
+      price: this.state.price,
+      created_at: this.state.price,
+    };
+
+    axios.post(SERVER_URL_requests, request).then((results) => {});
   }
 
   render() {
@@ -70,11 +70,11 @@ class newRequest extends Component {
       <div>
         <h3>New Request</h3>
 
-        <form onSubmit={this._handleSave}>
+        <form refs="requestsForm" onSubmit={this._handleSave}>
           <label>Branch:</label>
-          <select onChange={this._handleChange}>
+          <select name="branch_id" onChange={this._handleChange}>
             {this.state.branchList.map((branch) => (
-              <option key={this.state.request.branch_id} value={branch.branch_id} >
+              <option key={branch.id} value={branch.id}>
                 {branch.branch_name}
               </option>
             ))}
@@ -82,9 +82,9 @@ class newRequest extends Component {
 
           <br />
           <label>Product:</label>
-          <select onChange={ this._handleChange }>
+          <select name="product_id" onChange={this._handleChange}>
             {this.state.productList.map((product) => (
-              <option key={this.state.request.id} value={product.id}>
+              <option key={product.id} value={product.id}>
                 {product.item}
               </option>
             ))}
@@ -92,25 +92,29 @@ class newRequest extends Component {
           <br />
 
           <label>Quantity:</label>
+          <input type="number" name="quantity" onChange={this._handleChange} />
+          <br />
+          <label>Price:</label>
+          <input type="number" name="price" onChange={this._handleChange} />
+          <br />
+          <label>Status:</label>
           <input
-            type="number"
+            name="status"
+            type="text"
+            value="OPEN"
             onChange={this._handleChange}
           />
           <br />
-          <label>Price:</label>
-          <input type="number" />
-          <br />
-          <label>Status:</label>
-          <input type="text" value="OPEN" readOnly="true" />
-          <br />
-          <label>Request Created Today</label>
+          <label>Request Created</label>
           <input
             type="date"
+            name="created_at"
             value={this.state.current_date}
             onChange={this._handleChange}
           />
           <br />
-          <button type="submit" >Save</button>
+
+          <button type="submit">Save</button>
         </form>
       </div>
     );
