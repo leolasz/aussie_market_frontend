@@ -24,7 +24,6 @@ class Requests extends Component {
     fetchresult();
 
       this._deleteRequest = this._deleteRequest.bind(this);
-
   }
 
   _deleteRequest(requestId) {
@@ -65,7 +64,9 @@ class Requests extends Component {
                   <td>{req.price}</td>
                   <td>{req.status}</td>
                   <td>
-                    <button type="button"><Link to={"/editRequest"}>Edit</Link></button>
+                    <button type="button"><Link to={'/newRequest/',
+                                                  {data: req}} >Edit
+                                                  </Link></button>
                     &nbsp;<button type="button" onClick={() => this._deleteRequest(this,req.id)}>Delete</button>
                   </td>
                 </tr>
