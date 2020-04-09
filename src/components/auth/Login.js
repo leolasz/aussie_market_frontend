@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+const SERVER_URL_login = 'http://localhost:3000/login';
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -21,30 +23,24 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit(event) {
-    const { email, password } = this.state;
-//// problem maybe here?
-    axios
-      .post(
-        "http://localhost:3001/#/sessions",
-        {
-          user: {
-            email: email,
-            password: password
-          }
-        },
-        { withCredentials: true }
-      )
-      .then(response => {
-        if (response.data.logged_in) {
-          this.props.handleSuccessfulAuth(response.data);
-        }
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+      name: this.state.name
+    };
+
+    axios.post('http://localhost:3000/login', { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
       })
+  }
     //   .catch(error => {
     //     console.log("login error", error);
     //   });
     // event.preventDefault();
-  }
+ 
 
   render() {
     return (
