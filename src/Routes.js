@@ -7,10 +7,11 @@ import Requests from './components/Requests';
 import Branches from './components/Branches';
 import Products from './components/Products';
 import editRequest from './components/editRequest';
-
 import newRequest from './components/newRequest';
+import newBranch from './components/newBranch';
+import newProducts from './components/newProducts';
 
-import AddRequest from './components/AddRequest';
+
 
 
 
@@ -24,6 +25,9 @@ const Routes = (
       <Route exact path="/products" component={ Products } />
       <Route exact path="/editRequest" component={ editRequest } />
       <Route exact path="/newRequest" component={ newRequest } />
+      <Route exact path="/newBranch" component={ newBranch } />
+      <Route exact path="/newProducts" component={ newProducts } />
+
 
 
     </div>
