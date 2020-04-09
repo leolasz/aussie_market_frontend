@@ -1,6 +1,7 @@
 
 import React from 'react';
-import Market from './Market';
+import Login from './auth/Login';
+import Registration from './auth/Registration';
 import Main   from './Main';
 import Requests from './Requests';
 import Products from './Products';
@@ -12,7 +13,9 @@ import newProducts from './newProducts';
 function App() {
   return (
     <div className="App">
-        <Market />
+        <Login />
+        <Registration />
+        <Main />
         <Requests />
         <Products />
         <newRequest />

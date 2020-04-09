@@ -1,7 +1,8 @@
 
 import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import Market from './components/Market';
+import Login from './components/auth/Login';
+import Registration from './components/auth/Registration';
 import Main from './components/Main';
 import Requests from './components/Requests';
 import Branches from './components/Branches';
@@ -18,7 +19,8 @@ import newProducts from './components/newProducts';
 const Routes = (
  <Router>
    <div>
-      <Route exact path="/" component={ Market } />
+      <Route exact path="/" component={ Login } />
+      <Route exact path="/registration" component={ Registration } />
       <Route exact path="/main" component={ Main } />
       <Route exact path="/requests" component={ Requests } />
       <Route exact path="/branches" component={ Branches } />
