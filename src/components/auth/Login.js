@@ -30,7 +30,7 @@ export default class Login extends Component {
       name: this.state.name
     };
 
-    axios.post('http://localhost:3000/login', { user })
+    axios.post(SERVER_URL_login , { user })
       .then(res => {
         console.log(res);
         console.log(res.data);
