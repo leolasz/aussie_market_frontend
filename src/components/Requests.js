@@ -9,7 +9,8 @@ class Requests extends Component {
   constructor(){
     super();
     this.state = {
-      reqs: []
+      reqs: [],
+      id : 0
     };
 
     console.log("array:",this.state.reqs);
@@ -64,10 +65,13 @@ class Requests extends Component {
                   <td>{req.price}</td>
                   <td>{req.status}</td>
                   <td>
-                    <button type="button"><Link to={'/newRequest/',
-                                                  {data: req}} >Edit
-                                                  </Link></button>
-                    &nbsp;<button type="button" onClick={() => this._deleteRequest(this,req.id)}>Delete</button>
+                    <button type="button"><Link to={{
+                                            pathname: "/editRequest",
+                                            data: req.id
+                                          }}>Edit</Link>
+                    </button>
+                    &nbsp;
+                    <button type="button" onClick={() => this._deleteRequest(this,req.id)}>Delete</button>
                   </td>
                 </tr>
               ))}

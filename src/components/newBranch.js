@@ -19,11 +19,9 @@ class newBranch extends Component {
 
       const fetchresult = () => {
 
-          axios.get(SERVER_URL_branches).then((results) => {
+        axios.get(SERVER_URL_branches).then((results) => {
             this.setState({b: results.data});
           })
-          
-
       }
 
       fetchresult();

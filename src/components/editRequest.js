@@ -7,23 +7,28 @@ const SERVER_URL_products = 'http://localhost:3000/products';
 
 class editRequest extends Component {
 
-    constructor(){
-      super();
+    constructor(props){
+      super(props);
       this.state = {
-        b: [],
-        p: [],
+        requestList: [],
+        branchList: [],
+        productList: [],
         reqs: [],
         total_price: 0,
         current_date : new Date()
       };
-
+      console.log(props);
       const fetchresult = () => {
 
+          axios.get(SERVER_URL_requests).then((results) => {
+            this.setState({requestList: results.data});
+          })
+
           axios.get(SERVER_URL_branches).then((results) => {
-            this.setState({b: results.data});
+            this.setState({branchList: results.data});
           })
           axios.get(SERVER_URL_products).then((results) => {
-            this.setState({p: results.data});
+            this.setState({productList: results.data});
           })
 
       }

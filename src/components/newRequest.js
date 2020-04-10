@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const SERVER_URL_requests = "http://localhost:3000/requests/create";
 const SERVER_URL_branches = "http://localhost:3000/branches";
@@ -15,7 +16,7 @@ class newRequest extends Component {
       product_id: 0,
       quantity: 0,
       price: 0,
-      status: "",
+      status: "OPEN",
       created_at: ""
 
     };
@@ -102,7 +103,7 @@ class newRequest extends Component {
             name="status"
             type="text"
             value="OPEN"
-            onChange={this._handleChange}
+            // onChange={this._handleChange}
           />
           <br />
           <label>Request Created</label>
@@ -116,6 +117,7 @@ class newRequest extends Component {
 
           <button type="submit">Save</button>
         </form>
+        <button><Link to={'/main'} >Back </Link></button>
       </div>
     );
   }

@@ -18,7 +18,7 @@ export default class Home extends Component {
 
   handleLogoutClick() {
     axios
-      .delete("hhttp://localhost:3000/users.json", { withCredentials: true })
+      .delete("http://localhost:3000/users.json", { withCredentials: true })
       .then(response => {
         this.props.handleLogout();
       })
