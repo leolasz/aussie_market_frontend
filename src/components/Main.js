@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect, Route } from 'react-router-dom';
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Button from 'react-bootstrap/Button'
 
 
 class Main extends Component{
@@ -8,18 +10,22 @@ class Main extends Component{
   render(){
     return(
       <div>
-        <h1>Welcome to Aussie Market Manager</h1>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-            <li><button><Link to={"/newProducts"} >New Products </Link></button></li>
-            <li><button><Link to={"/newBranch"} >New Branch </Link></button></li>
-            <li><button><Link to={"/newRequest"} >New Request </Link></button></li>
-            <li><button><Link to={"/requests"} > All Requests </Link></button></li>
-            <li><button><Link to={"/branches"} > All Branches </Link></button></li>
-            <li><button><Link to={"/products"} > All Products </Link></button></li>
-             </ul>
-         </nav>
+        <Jumbotron fluid>
 
+    <h1>Welcome to Aussie Market </h1>
+    <p>
+    This platform is intended for internal control.
+    </p>
+    <>
+   
+  <Button variant="secondary"><Link to={"/newProducts"} >New Products </Link></Button>{' '}
+  <Button variant="success"><Link to={"/newBranch"} >New Branch </Link></Button>{' '}
+  <Button variant="warning"><Link to={"/newRequest"} >New Request </Link></Button>{' '}
+  <Button variant="danger"><Link to={"/requests"} > All Requests </Link></Button> 
+  <Button variant="info"><Link to={"/products"} > All Products </Link></Button>{' '}
+  <Button variant="light"><Link to={"/branches"} > All Branches </Link></Button> 
+</>
+</Jumbotron>
       </div>
     );
   }

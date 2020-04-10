@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -63,7 +64,9 @@ class Products extends Component {
               ))}
 
           </table>
+          <button><Link to={'/main'} >Back </Link></button>
       </div>
+      
     )
   }
 

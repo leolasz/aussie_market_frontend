@@ -19,7 +19,7 @@ import newProducts from './components/newProducts';
 const Routes = (
  <Router>
    <div>
-      <Route exact path="/login" component={ Login } />
+      <Route exact path="/" component={ Login } />
       <Route exact path="/registration" component={ Registration } />
       <Route exact path="/main" component={ Main } />
       <Route exact path="/requests" component={ Requests } />
