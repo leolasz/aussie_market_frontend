@@ -77,7 +77,7 @@ class Requests extends Component {
               ))}
 
           </table>
-          <button><Link to={'/main'} >Back </Link></button>
+
       </div>
     )
   }

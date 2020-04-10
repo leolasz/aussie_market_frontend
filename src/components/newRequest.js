@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const SERVER_URL_requests = "http://localhost:3000/requests/create";
 const SERVER_URL_branches = "http://localhost:3000/branches";
@@ -115,9 +116,10 @@ class newRequest extends Component {
           />
           <br />
 
-          <button type="submit">Save</button>
+          <Button variant="primary"><button type="submit">Done</button></Button>{' '}
+          <Button variant="danger"><Link to={'/main'} >Back </Link></Button>{' '}
         </form>
-        <button><Link to={'/main'} >Back </Link></button>
+       
       </div>
     );
   }
