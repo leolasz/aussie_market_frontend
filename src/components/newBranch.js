@@ -43,7 +43,7 @@ class newBranch extends Component {
           
           };
       
-    
+          this.props.history.push('/main')
           axios.post(SERVER_URL_branches, branch).then((results) => {});
     
         }

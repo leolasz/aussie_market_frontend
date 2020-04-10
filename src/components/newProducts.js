@@ -43,7 +43,7 @@ class newProducts extends Component {
       
       };
   
-
+      this.props.history.push('/main')
       axios.post(SERVER_URL_products, product).then((results) => {});
 
     }

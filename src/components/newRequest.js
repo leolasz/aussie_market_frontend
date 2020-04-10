@@ -31,7 +31,7 @@ class newRequest extends Component {
         });
       });
 
-      //Products
+    
       axios.get(SERVER_URL_products).then((response) => {
         this.setState({
           productList: response.data,
@@ -62,7 +62,7 @@ class newRequest extends Component {
       price: this.state.price,
       created_at: this.state.price,
     };
-
+    this.props.history.push('/main')
     axios.post(SERVER_URL_requests, request).then((results) => {});
   }
 

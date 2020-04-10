@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const SERVER_URL_login = 'http://localhost:3000/login';
 
@@ -29,7 +30,7 @@ export default class Login extends Component {
     const user = {
       name: this.state.name
     };
-
+    this.props.history.push('/main')
     axios.post(SERVER_URL_login , { user })
       .then(res => {
         console.log(res);
