@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Montserrat&family=Roboto&display=swap');
+
+
+body {
+  background-color:rgb(219, 222, 223);
+  font-family: 'Dosis', sans-serif;
+  color: rgb(20, 11, 5);
+  font-size: medium;
+}
+h3 {
+    font-size: large ;
+    text-align: center;
+    
+
+}
+
+input {
+  display: block;
+  margin:0 auto;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr 5fr;
+  grid-row-gap: 2em;
+  justify-items: center;
+}
+
+.results {
+  display: grid;
+  grid-template-row: 1fr 1fr;
+  grid-gap: 2em;
+}
+
+td {
+  text-align: center;
+}
+
+textarea {
+  padding:5px;
+  margin:20px;
+  border-radius: 8px;
+  border: cornflowerblue 4px solid;
+}
+
+a{
+  display: block;
+  padding: 1em;
+  background: linear-gradient(slategray, white, slategray);
+  border-radius: 1em;
+  margin: 2em;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  background: linear-gradient(white, slategray, white);
+}

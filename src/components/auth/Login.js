@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Button from "react-bootstrap/Button";
 
 const SERVER_URL_login = 'http://localhost:3000/login';
 
@@ -46,6 +47,7 @@ export default class Login extends Component {
   render() {
     return (
       <div>
+      <br></br> <br></br><br></br> <br></br>
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"
@@ -62,10 +64,12 @@ export default class Login extends Component {
             placeholder="Password"
             value={this.state.password}
             onChange={this.handleChange}
-            required
+            required 
+            
           />
-
-          <button type="submit">Login</button>
+          
+<br></br> <br></br>  
+<Button type="submit">Login</Button>
         </form>
       </div>
     );
