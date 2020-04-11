@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import '../css/newProducts.css';
 
 
 const SERVER_URL_requests = 'http://localhost:3000/requests';
@@ -71,8 +72,10 @@ class newProducts extends Component {
             />
            
           <br />
-          <Button variant="primary"><button type="submit">Done</button></Button>{' '}
-          <Button variant="danger"><Link to={'/main'} >Back </Link></Button>{' '}
+          <Button type="submit">Done</Button>
+          <br></br><br></br>
+         
+          <Button ><Link to={'/main'} >Back Home Page </Link></Button>
           </form>
           <br></br>
          

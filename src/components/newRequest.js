@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import '../css/newRequest.css';
 
 const SERVER_URL_requests = "http://localhost:3000/requests/create";
 const SERVER_URL_branches = "http://localhost:3000/branches";
@@ -95,10 +96,10 @@ class newRequest extends Component {
 
           <label>Quantity:</label>
           <input type="number" name="quantity" onChange={this._handleChange} />
-          <br />
+          
           <label>Price:</label>
           <input type="number" name="price" onChange={this._handleChange} />
-          <br />
+         
           <label>Status:</label>
           <input
             name="status"
@@ -114,10 +115,10 @@ class newRequest extends Component {
             value={this.state.current_date}
             onChange={this._handleChange}
           />
-          <br />
-
-          <Button variant="primary"><button type="submit">Done</button></Button>{' '}
-          <Button variant="danger"><Link to={'/main'} >Back </Link></Button>{' '}
+         
+              <Button variant=""><button type="submit">Done</button></Button>{' '} <br>
+              </br>
+          <Button variant="danger"><Link to={'/main'} >Back Home page </Link></Button>{' '}
         </form>
        
       </div>

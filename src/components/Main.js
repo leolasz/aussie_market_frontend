@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Redirect, Route } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
+import '../css/Main.css';
 
 
 class Main extends Component{
