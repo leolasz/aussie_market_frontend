@@ -11,6 +11,7 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+<<<<<<< HEAD
 }
 
 .App-header {
@@ -50,3 +51,5 @@ a{
 a:hover{
   background: linear-gradient(white, slategray, white);
 }
+=======
+>>>>>>> d1b6cb1050caa9f3c65791f55befe54d3b25d7f7
