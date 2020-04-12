@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import '../css/newRequest.css';
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import "../css/newRequest.css";
 
 const SERVER_URL_requests = "http://localhost:3000/requests/create";
 const SERVER_URL_branches = "http://localhost:3000/branches";
@@ -19,8 +19,7 @@ class newRequest extends Component {
       quantity: 0,
       price: 0,
       status: "OPEN",
-      created_at: ""
-
+      created_at: "",
     };
 
     const fetchresult = () => {
@@ -33,7 +32,6 @@ class newRequest extends Component {
         });
       });
 
-    
       axios.get(SERVER_URL_products).then((response) => {
         this.setState({
           productList: response.data,
@@ -64,7 +62,7 @@ class newRequest extends Component {
       price: this.state.price,
       created_at: this.state.price,
     };
-    this.props.history.push('/main')
+    this.props.history.push("/main");
     axios.post(SERVER_URL_requests, request).then((results) => {});
   }
 
@@ -82,7 +80,6 @@ class newRequest extends Component {
               </option>
             ))}
           </select>
-
           <br />
           <label>Product:</label>
           <select name="product_id" onChange={this._handleChange}>
@@ -93,13 +90,10 @@ class newRequest extends Component {
             ))}
           </select>
           <br />
-
           <label>Quantity:</label>
           <input type="number" name="quantity" onChange={this._handleChange} />
-          
           <label>Price:</label>
           <input type="number" name="price" onChange={this._handleChange} />
-         
           <label>Status:</label>
           <input
             name="status"
@@ -115,12 +109,14 @@ class newRequest extends Component {
             value={this.state.current_date}
             onChange={this._handleChange}
           />
-         
-              <Button variant=""><button type="submit">Done</button></Button>{' '} <br>
-              </br>
-          <Button variant="danger"><Link to={'/main'} >Back Home page </Link></Button>{' '}
+          <Button variant="">
+            <button type="submit">Done</button>
+          </Button>{" "}
+          <br></br>
+          <Button variant="danger">
+            <Link to={"/main"}>Back Home page </Link>
+          </Button>{" "}
         </form>
-       
       </div>
     );
   }

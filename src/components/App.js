@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import newRequest from './newRequest';
 import newBranch from './newBranch';
 import newProducts from './newProducts';
-import AddRequest from './AddRequest';
+
 
 function App() {
   return (
@@ -22,7 +22,6 @@ function App() {
         <newRequest />
         <newBranch />
         <newProducts />
-        <AddRequest />
     </div>
   );
 }
