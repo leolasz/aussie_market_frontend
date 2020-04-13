@@ -74,6 +74,9 @@ class Branches extends Component {
   render(){
     return(
       <div>
+        <Button variant="danger">
+          <Link to={'/main'}>Home</Link>
+        </Button>
         <h3>All Branches</h3>
         <Table striped bordered hover>
             <thead>
@@ -183,10 +186,8 @@ class Edit extends React.Component {
             value={this.state.contact}
             onChange={this.handleChange} />
         </label>
-
         <input type="hidden" name='id' value={this.state.id}/>
         <button type="submit">Save</button>
-        <Button variant="danger"><Link to={'/main'}>Back Home page </Link></Button>{' '}
       </form>
     );
   }

@@ -42,14 +42,16 @@ class newBranch extends Component {
   render() {
     return (
       <div>
+        <Button variant="danger">
+          <Link to={'/main'}>Home</Link>
+        </Button>
         <h3>New Branch</h3>
-
         <form refs="branchForm" onSubmit={this._handleSave}>
           <label>Branch Name:</label>
-          <input type="text" name="branch_name" onChange={this._handleChange} />
+          <input type="text" name="branch_name" onChange={this._handleChange} required/>
           <br />
           <label>Location:</label>
-          <input type="text" name="location" onChange={this._handleChange} />
+          <input type="text" name="location" onChange={this._handleChange} required/>
           <br />
           <label>Email:</label>
           <input type="text" name="email" onChange={this._handleChange} />
@@ -59,16 +61,12 @@ class newBranch extends Component {
             name="contact"
             type="text"
             value={this.state.contact}
+            placeholder="xxxxxxxxxxx"
+            pattern="^\d{10}$"
             onChange={this._handleChange}
           />
           <br />
-          <Button variant="">
-            <button type="submit">Done</button>
-          </Button>{" "}
-          <br></br>
-          <Button variant="danger">
-            <Link to={"/main"}>Back Home page </Link>
-          </Button>{" "}
+          <button type="submit">Done</button>
         </form>
         <br></br>
       </div>

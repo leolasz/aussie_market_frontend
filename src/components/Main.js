@@ -14,7 +14,6 @@ class Main extends Component{
     <Jumbotron fluid>
       <h1>Welcome to Aussie Market </h1>
       <p>This platform is intended for internal control.</p>
-      <>
         <Button variant="secondary">
           <Link to={"/newProducts"}>New Products </Link>
         </Button>{" "}
@@ -26,7 +25,7 @@ class Main extends Component{
         </Button>{" "}
         <Button variant="danger">
           <Link to={"/requests"}> All Requests </Link>
-        </Button>
+        </Button>{" "}
         <Button variant="info">
           <Link to={"/products"}> All Products </Link>
         </Button>{" "}
@@ -36,8 +35,6 @@ class Main extends Component{
         <Button variant="link">
           <Link to={"/"}> LogOut </Link>
         </Button>
-      </>
-
     </Jumbotron>
 
   </div>

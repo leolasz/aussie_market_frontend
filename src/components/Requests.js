@@ -14,11 +14,7 @@ class Requests extends Component {
     super(props);
 
     this.state = {
-      branchList: [],
-      productList: [],
-      formdata: [],
-      // show: false
-
+      formdata: []
     };
 
     this.onSave = this.onSave.bind(this);
@@ -29,7 +25,6 @@ class Requests extends Component {
         this.setState({ formdata: results.data });
       });
     };
-
 
   fetchResults();
     this.deleteRecord = this.deleteRecord.bind(this);
@@ -56,13 +51,12 @@ class Requests extends Component {
     this.setState({
       formdata: this.state.formdata.filter((item, index) => {
         return index !== i;
-      }),
+      })
     });
 
     axios
       .delete(`${SERVER_URL_requests}/${id}`)
       .then((result) => {
-
       });
   }
 
@@ -81,7 +75,8 @@ class Requests extends Component {
   render() {
     return (
       <div>
-        <p>All Requests</p>
+        <Button variant="danger"><Link to={'/main'}>Home</Link></Button>
+        <h3>All Requests</h3>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -98,8 +93,8 @@ class Requests extends Component {
             {this.state.formdata.map((item, i) => (
               <tr key={i}>
                 <td>{item.id}</td>
-                <td>{item.branch_id}</td>
-                <td>{item.product_id}</td>
+                <td>{item.branch_name}</td>
+                <td>{item.item}</td>
                 <td>{item.quantity}</td>
                 <td>{item.price}</td>
                 <td>{item.status}</td>
@@ -154,8 +149,7 @@ class Edit extends React.Component {
       });
     };
 
-  fetchResults();
-
+    fetchResults();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -188,6 +182,9 @@ class Edit extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <label>Id:<br/>
+          <input type="text" name='id' value={this.state.id} readOnly={true}/>
+        </label>
         <label>Branch:<br/>
           <select
             name="branch_id"
@@ -242,9 +239,7 @@ class Edit extends React.Component {
             ))}
           </select>
         </label>
-        <input type="hidden" name='id' value={this.state.id}/>
         <button type="submit">Save</button>
-        <Button variant="danger"><Link to={'/main'}>Back Home page </Link></Button>
       </form>
     );
   }

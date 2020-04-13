@@ -74,10 +74,12 @@ class newRequest extends Component {
   render() {
     return (
       <div>
+      <Button variant="danger">
+        <Link to={"/main"}>Home</Link>
+      </Button>
         <h3>New Request</h3>
-
         <form refs="requestsForm" onSubmit={this._handleSave}>
-          <label>Branch:</label>
+          <label>Branch:</label><br/>
           <select name="branch_id" onChange={this._handleChange}>
             {this.state.branchList.map((branch) => (
               <option key={branch.id} value={branch.id}>
@@ -86,7 +88,7 @@ class newRequest extends Component {
             ))}
           </select>
           <br />
-          <label>Product:</label>
+          <label>Product:</label><br/>
           <select name="product_id" onChange={this._handleChange}>
             {this.state.productList.map((product) => (
               <option key={product.id} value={product.id}>
@@ -94,7 +96,7 @@ class newRequest extends Component {
               </option>
             ))}
           </select>
-          <br />
+          <br/>
           <label>Quantity:</label>
           <input type="number" name="quantity" onChange={this._handleChange} />
           <label>Price:</label>
@@ -104,17 +106,11 @@ class newRequest extends Component {
             name="status"
             type="text"
             value="OPEN"
+            readOnly={true}
             // onChange={this._handleChange}
           />
           <br />
-
-          <Button variant="">
-            <button type="submit">Done</button>
-          </Button>{" "}
-          <br></br>
-          <Button variant="danger">
-            <Link to={"/main"}>Back Home page </Link>
-          </Button>{" "}
+          <button type="submit">Done</button>
         </form>
       </div>
     );

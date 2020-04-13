@@ -61,18 +61,21 @@ class Products extends Component {
   }
 
   editRecord(i) {
-    let request = this.state.productList[i];
+    let product = this.state.productList[i];
     this.refs.editForm.setState({
-          id: request.id,
-          item: request.item,
-          price: request.price,
-          image: request.image
+          id: product.id,
+          item: product.item,
+          price: product.price,
+          image: product.image
     });
   }
 
   render(){
     return(
       <div>
+        <Button variant="danger">
+          <Link to={'/main'}>Home</Link>
+        </Button>
         <h3>All Products</h3>
           <Table striped bordered hover>
             <thead>
@@ -112,12 +115,21 @@ class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productList: [],
       id : '',
       item: '',
       price: '',
       image: ''
     };
-
+    const fetchResults = () => {
+      //Products
+      axios.get(SERVER_URL_products).then((response) => {
+        this.setState({
+          productList: response.data
+        });
+      });
+    };
+    fetchResults();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -144,14 +156,19 @@ class Edit extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Product:
-          <input
-            type="string"
-            name='item'
-            value={this.state.item}
-            onChange={this.handleChange} />
-        </label>
+      <label>
+        Product:<br/>
+        <select
+          name="item"
+          value={this.state.id}
+          onChange={this.handleChange}>
+          {this.state.productList.map((product) => (
+            <option key={product.id} value={product.id}>
+              {product.item}
+            </option>
+          ))}
+        </select>
+      </label>
         <label>
           Price:
           <input
@@ -170,7 +187,6 @@ class Edit extends React.Component {
         </label>
         <input type="hidden" name='id' value={this.state.id}/>
         <button type="submit">Save</button>
-        <Button variant="danger"><Link to={'/main'}>Back Home page </Link></Button>{' '}
       </form>
     );
   }
