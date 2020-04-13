@@ -24,18 +24,6 @@ class Requests extends Component {
     this.onSave = this.onSave.bind(this);
 
     const fetchResults = () => {
-      //Branches
-      axios.get(SERVER_URL_branches).then((response) => {
-        this.setState({
-          branchList: response.data,
-        });
-      });
-      //Products
-      axios.get(SERVER_URL_products).then((response) => {
-        this.setState({
-          productList: response.data,
-        });
-      });
       //Requests
       axios.get(SERVER_URL_requests).then((results) => {
         this.setState({ formdata: results.data });
@@ -81,12 +69,12 @@ class Requests extends Component {
   editRecord(i) {
     let request = this.state.formdata[i];
     this.refs.editForm.setState({
-          id: request.id,
-          branch_id: request.branch_id,
-          product_id: request.product_id,
-          quantity: request.quantity,
-          price: request.price,
-          status: request.status
+        id: request.id,
+        branch_id: request.branch_id,
+        product_id: request.product_id,
+        quantity: request.quantity,
+        price: request.price,
+        status: request.status
     });
   }
 
@@ -140,6 +128,9 @@ class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      branchList: [],
+      productList: [],
+      statusList: ['OPEN', 'CLOSE'],
       id : '',
       branch_id: '',
       product_id: '',
@@ -147,6 +138,23 @@ class Edit extends React.Component {
       price: '',
       status: ''
     };
+
+    const fetchResults = () => {
+      //Branches
+      axios.get(SERVER_URL_branches).then((response) => {
+        this.setState({
+          branchList: response.data
+        });
+      });
+      //Products
+      axios.get(SERVER_URL_products).then((response) => {
+        this.setState({
+          productList: response.data
+        });
+      });
+    };
+
+  fetchResults();
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -164,12 +172,15 @@ class Edit extends React.Component {
       .then(
         (result) => {
           this.props.save();
-          this.setState({id : '',
-                        branch_id: '',
-                        product_id: '',
-                        quantity: '',
-                        price: '',
-                        status: ''});
+          this.setState(
+            {
+              id : '',
+              branch_id: '',
+              product_id: '',
+              quantity: '',
+              price: '',
+              status: ''
+          });
         }
       )
   }
@@ -177,21 +188,30 @@ class Edit extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Branch:
-          <input
-            type="number"
-            name='branch_id'
+        <label>Branch:<br/>
+          <select
+            name="branch_id"
             value={this.state.branch_id}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}>
+            {this.state.branchList.map((branch) => (
+              <option key={branch.id} value={branch.id}>
+                {branch.branch_name}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
-          Product:
-          <input
-            type="number"
-            name='product_id'
+          Product:<br/>
+          <select
+            name="product_id"
             value={this.state.product_id}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}>
+            {this.state.productList.map((product) => (
+              <option key={product.id} value={product.id}>
+                {product.item}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Quantity:
@@ -210,16 +230,21 @@ class Edit extends React.Component {
             onChange={this.handleChange} />
         </label>
         <label>
-          Status:
-          <input
-            type="string"
-            name='status'
+          Status:<br/>
+          <select
+            name="status"
             value={this.state.status}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}>
+            {this.state.statusList.map((status) => (
+              <option key={status} value={status}>
+                {status}
+              </option>
+            ))}
+          </select>
         </label>
         <input type="hidden" name='id' value={this.state.id}/>
         <button type="submit">Save</button>
-        <Button variant="danger"><Link to={'/main'}>Back Home page </Link></Button>{' '}
+        <Button variant="danger"><Link to={'/main'}>Back Home page </Link></Button>
       </form>
     );
   }

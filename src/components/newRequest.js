@@ -53,6 +53,11 @@ class newRequest extends Component {
   // Event listener
   _handleSave(event) {
     event.preventDefault(); // Stay here and handle the submission with JS.
+    // Request created on current Date
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
 
     var request = {
       branch_id: this.state.branch_id,
@@ -60,7 +65,7 @@ class newRequest extends Component {
       quantity: this.state.quantity,
       status: this.state.status,
       price: this.state.price,
-      created_at: this.state.price,
+      created_at: dateTime
     };
     this.props.history.push("/main");
     axios.post(SERVER_URL_requests, request).then((results) => {});
@@ -102,13 +107,7 @@ class newRequest extends Component {
             // onChange={this._handleChange}
           />
           <br />
-          <label>Request Created</label>
-          <input
-            type="date"
-            name="created_at"
-            value={this.state.current_date}
-            onChange={this._handleChange}
-          />
+
           <Button variant="">
             <button type="submit">Done</button>
           </Button>{" "}

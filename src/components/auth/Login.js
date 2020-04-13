@@ -31,6 +31,7 @@ export default class Login extends Component {
     const user = {
       name: this.state.name
     };
+
     this.props.history.push('/main')
     axios.post(SERVER_URL_login , { user })
       .then(res => {
@@ -42,7 +43,7 @@ export default class Login extends Component {
     //     console.log("login error", error);
     //   });
     // event.preventDefault();
- 
+
 
   render() {
     return (
@@ -64,15 +65,14 @@ export default class Login extends Component {
             placeholder="Password"
             value={this.state.password}
             onChange={this.handleChange}
-            required 
-            
+            required
+
           />
-          
-<br></br> <br></br>  
-<Button type="submit">Login</Button>
+
+          <br></br> <br></br>
+          <Button type="submit">Login</Button>
         </form>
       </div>
     );
   }
 }
-
